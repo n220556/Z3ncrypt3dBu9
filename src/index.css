@@ -130,11 +130,11 @@ All colors are HSL for better design system control
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-display;
   }
 }
 
-/* Custom Animations & Utilities */
+/* Custom Utilities */
 @layer utilities {
   .transition-smooth {
     transition: var(--transition-smooth);
@@ -142,20 +142,6 @@ All colors are HSL for better design system control
   
   .transition-fast {
     transition: var(--transition-fast);
-  }
-
-  /* Text animations */
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
-    }
-    to {
-      text-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.6);
-    }
   }
 
   /* Hover effects */
