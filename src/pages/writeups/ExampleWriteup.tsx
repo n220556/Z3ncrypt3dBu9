@@ -5,7 +5,7 @@ const ExampleWriteup = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    fetch("/example.md")
+    fetch("public/example.md")
       .then((res) => res.text())
       .then(setContent);
   }, []);
