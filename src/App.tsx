@@ -35,7 +35,7 @@ const App = () => (
             {/* Writeups */}
             <Route path="/writeups" element={<div className="text-center py-20"><h1 className="text-2xl font-bold text-muted-foreground">CTF Write-ups Coming Soon</h1></div>} />
             <Route path="/writeups/head-dump" element={<HeadDump />} />
-            <Route path="/writeups/example" element={<ExampleWriteup />} />
+            <Route path="/writeups/example-blog" element={<ExampleWriteup />} />
             {/* Blogs */}
             <Route path="/blogs" element={<div className="text-center py-20"><h1 className="text-2xl font-bold text-muted-foreground">Blog Posts Coming Soon</h1></div>} />
             <Route path="/blogs/text-typography" element={<TextTypography />} />

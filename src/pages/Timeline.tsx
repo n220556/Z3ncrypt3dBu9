@@ -12,6 +12,15 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
+    id: '0',
+    date: 'Jan 1, 2025',
+    title: 'Example Blog',
+    category: 'writeup',
+    tags: ['example', 'blog', 'markdown'],
+    description: 'An example blog post demonstrating content structure and styling for cybersecurity writeups and educational content.',
+    link: '/writeups/example-blog'
+  },
+  {
     id: '1',
     date: 'Jan 15, 2025',
     title: 'head-dump',

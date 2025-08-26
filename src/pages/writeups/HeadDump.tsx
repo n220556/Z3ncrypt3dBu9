@@ -3,6 +3,12 @@ import { Button } from '@/components/ui/button';
 
 const relatedPosts = [
   {
+    title: 'Example Blog',
+    category: 'writeup',
+    tags: ['example', 'blog'],
+    link: '/writeups/example-blog'
+  },
+  {
     title: 'Text and Typography',
     category: 'blog',
     tags: ['markdown', 'typography'],
