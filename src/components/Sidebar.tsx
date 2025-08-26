@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, User, Code, Briefcase, FileText, BookOpen, Tag, Mail, Menu, X, Terminal } from 'lucide-react';
+import { Home, User, Code, Briefcase, FileText, BookOpen, Tag, Mail, Menu, X, Terminal, Clock } from 'lucide-react';
 import profileImage from '@/assets/profile-image.jpg';
 const navigation = [{
   name: 'Home',
@@ -18,6 +18,10 @@ const navigation = [{
   name: 'Services',
   href: '/services',
   icon: Briefcase
+}, {
+  name: 'Timeline',
+  href: '/timeline',
+  icon: Clock
 }, {
   name: 'Write-ups',
   href: '/writeups',
