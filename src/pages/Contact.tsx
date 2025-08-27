@@ -1,10 +1,59 @@
-import { Mail, Github, Linkedin, MapPin, Clock } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, Clock, Loader2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import emailjs from '@emailjs/browser';
+import { toast } from 'sonner';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+
+const formSchema = z.object({
+  from_name: z.string().min(2, 'Name must be at least 2 characters'),
+  from_email: z.string().email('Please enter a valid email address'),
+  subject: z.string().min(5, 'Subject must be at least 5 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 export default function Contact() {
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      from_name: '',
+      from_email: '',
+      subject: '',
+      message: '',
+    },
+  });
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      await emailjs.send(
+        'service_obw4hks',
+        'template_uqojjx6',
+        data,
+        '7vmI46_5MKe7jnBZt'
+      );
+      
+      toast.success('Message sent successfully!', {
+        description: 'Thank you for reaching out. I\'ll get back to you soon.',
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error('Failed to send message', {
+        description: 'Please try again or contact me directly via email.',
+      });
+    }
+  };
+
+  const isSubmitting = form.formState.isSubmitting;
+
   return (
     <div className="space-y-12">
       {/* Header */}
@@ -27,35 +76,85 @@ export default function Contact() {
             </p>
           </div>
 
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Name</label>
-                <Input placeholder="Your name" />
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="from_name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="from_email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input type="email" placeholder="your.email@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Email</label>
-                <Input type="email" placeholder="your.email@example.com" />
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Subject</label>
-              <Input placeholder="What would you like to discuss?" />
-            </div>
-            
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Message</label>
-              <Textarea 
-                placeholder="Tell me about your project, questions, or how we can work together..."
-                rows={6}
+              
+              <FormField
+                control={form.control}
+                name="subject"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Subject</FormLabel>
+                    <FormControl>
+                      <Input placeholder="What would you like to discuss?" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
+              
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Message</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Tell me about your project, questions, or how we can work together..."
+                        rows={6}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <Button className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300">
-              Send Message
-            </Button>
-          </form>
+              <Button 
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
+              </Button>
+            </form>
+          </Form>
         </Card>
 
         {/* Contact Information */}
