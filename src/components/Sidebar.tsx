@@ -19,21 +19,10 @@ const navigation = [{
   href: '/services',
   icon: Briefcase
 }, {
-  name: 'Timeline',
-  href: '/timeline',
-  icon: Clock
-}, {
   name: 'Write-ups',
-  href: '/writeups',
-  icon: FileText
-}, {
-  name: 'Blogs',
-  href: '/blogs',
-  icon: BookOpen
-}, {
-  name: 'Tags',
-  href: '/tags',
-  icon: Tag
+  href: 'https://z3ncrypt3dbu9writeups.vercel.app',
+  icon: FileText,
+  external: true
 }, {
   name: 'Contact',
   href: '/contact',
@@ -83,17 +72,30 @@ export function Sidebar() {
               {navigation.map(item => {
               const Icon = item.icon;
               return <li key={item.name}>
-                    <NavLink to={item.href} onClick={() => setIsOpen(false)} className={`
-                        flex items-center px-3 py-2.5 rounded-lg transition-all duration-200
-                        group hover:bg-card-hover
-                        ${isActive(item.href) ? 'bg-primary/10 text-primary border border-primary/20 shadow-glow' : 'text-muted-foreground hover:text-foreground'}
-                      `}>
-                      <Icon className={`
-                        h-5 w-5 mr-3 transition-colors
-                        ${isActive(item.href) ? 'text-primary' : ''}
-                      `} />
-                      <span className="font-medium">{item.name}</span>
-                    </NavLink>
+                    {item.external ? (
+                      <a 
+                        href={item.href} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        onClick={() => setIsOpen(false)} 
+                        className="flex items-center px-3 py-2.5 rounded-lg transition-all duration-200 group hover:bg-card-hover text-muted-foreground hover:text-foreground"
+                      >
+                        <Icon className="h-5 w-5 mr-3 transition-colors" />
+                        <span className="font-medium">{item.name}</span>
+                      </a>
+                    ) : (
+                      <NavLink to={item.href} onClick={() => setIsOpen(false)} className={`
+                          flex items-center px-3 py-2.5 rounded-lg transition-all duration-200
+                          group hover:bg-card-hover
+                          ${isActive(item.href) ? 'bg-primary/10 text-primary border border-primary/20 shadow-glow' : 'text-muted-foreground hover:text-foreground'}
+                        `}>
+                        <Icon className={`
+                          h-5 w-5 mr-3 transition-colors
+                          ${isActive(item.href) ? 'text-primary' : ''}
+                        `} />
+                        <span className="font-medium">{item.name}</span>
+                      </NavLink>
+                    )}
                   </li>;
             })}
             </ul>
