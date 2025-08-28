@@ -73,14 +73,14 @@ export function Hero() {
                 <Mail className="h-5 w-5" />
               </a>
               <a 
-                href="#"
+                href="https://github.com/n220556"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </a>
               <a 
-                href="#"
+                href="https://www.linkedin.com/in/raj-kumar-pentester/"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="LinkedIn"
               >
