@@ -7,8 +7,11 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-background text-foreground font-display">
-      <div className="flex">
+    <div className="min-h-screen bg-modern-mesh bg-floating-orbs relative overflow-hidden text-foreground font-display">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-primary/5 to-secondary/5" />
+      <div className="flex relative z-10">
         <Sidebar />
         <main className="flex-1 md:ml-0 min-h-screen">
           <div className="max-w-4xl mx-auto px-6 py-8 md:px-8 md:py-12">

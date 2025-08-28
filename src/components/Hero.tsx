@@ -5,12 +5,11 @@ import profileImage from '@/assets/profile-image.jpg';
 export function Hero() {
   return (
     <section className="relative min-h-[80vh] flex items-center">
-      {/* Background Grid */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, hsl(var(--primary)) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-grid-pattern" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
       
       <div className="relative z-10 w-full">
@@ -24,7 +23,7 @@ export function Hero() {
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                <span className="gradient-text-animated animate-glow">
                   Raj Kumar
                 </span>
               </h1>
@@ -47,7 +46,7 @@ export function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                className="bg-gradient-primary hover:shadow-glow transition-all duration-300 group"
+                className="bg-gradient-primary hover:shadow-glow transition-all duration-300 group pulse-glow"
                 size="lg"
               >
                 View Portfolio
@@ -57,7 +56,7 @@ export function Hero() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-primary/20 hover:bg-primary/5 hover:border-primary/40"
+                className="glass-card border-primary/20 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300"
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Contact Me
@@ -93,27 +92,33 @@ export function Hero() {
           {/* Profile Image */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-30 scale-110" />
+              {/* Enhanced Glow Effects */}
+              <div className="absolute inset-0 bg-gradient-primary rounded-full blur-3xl opacity-40 scale-110 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-secondary rounded-full blur-2xl opacity-20 scale-125" style={{ animationDelay: '1s' }} />
               
-              {/* Image Container */}
-              <div className="relative w-80 h-80 rounded-full bg-gradient-primary p-1">
-                <div className="w-full h-full rounded-full overflow-hidden bg-card">
+              {/* Image Container with Glass Effect */}
+              <div className="relative w-80 h-80 rounded-full bg-gradient-primary p-1 glass-card">
+                <div className="w-full h-full rounded-full overflow-hidden bg-card/90 backdrop-blur-sm">
                   <img 
                     src={"https://media.licdn.com/dms/image/v2/D4E03AQGuvW8OzVHnWQ/profile-displayphoto-shrink_800_800/B4EZVCz.mgHcAk-/0/1740582678359?e=1759363200&v=beta&t=5o1LPg-gPLdS1Jbpgfcg_WIBgic4rsc4ISWXCL6ksPs"}
                     alt="Raj Kumar - Cybersecurity Professional"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover-lift"
                   />
                 </div>
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-lg backdrop-blur-sm border border-secondary/30 flex items-center justify-center">
+              {/* Enhanced Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 glass-card bg-secondary/20 rounded-xl backdrop-blur-sm border border-secondary/30 flex items-center justify-center hover-lift pulse-glow">
                 <span className="text-secondary font-mono font-bold">CTF</span>
               </div>
               
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-lg backdrop-blur-sm border border-primary/30 flex items-center justify-center">
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 glass-card bg-primary/20 rounded-xl backdrop-blur-sm border border-primary/30 flex items-center justify-center hover-lift" style={{ animationDelay: '1s' }}>
                 <span className="text-primary text-xs font-mono">SEC+</span>
+              </div>
+
+              {/* Additional floating tech badges */}
+              <div className="absolute top-1/4 -left-8 w-12 h-12 glass-card bg-orange-500/20 rounded-lg backdrop-blur-sm border border-orange-500/30 flex items-center justify-center hover-lift" style={{ animationDelay: '2s' }}>
+                <span className="text-orange-400 text-xs font-mono">⚡</span>
               </div>
             </div>
           </div>
