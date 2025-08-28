@@ -26,10 +26,22 @@ const education = [
 ];
 
 const certifications = [
-  'IBM Cybersecurity Fundamentals',
-  'Cisco Networking Essentials', 
-  'Udemy Ethical Hacking Course',
-  'Forge Security Training'
+  {
+    name: 'IBM Cybersecurity Fundamentals',
+    link: 'https://www.credly.com/badges/your-ibm-cert-id'
+  },
+  {
+    name: 'Cisco Networking Essentials',
+    link: 'https://www.netacad.com/certificates/your-cisco-cert-id'
+  },
+  {
+    name: 'Udemy Ethical Hacking Course',
+    link: 'https://www.udemy.com/certificate/your-udemy-cert-id'
+  },
+  {
+    name: 'Forge Security Training',
+    link: 'https://forge.security/certificates/your-forge-cert-id'
+  }
 ];
 
 export default function About() {
@@ -122,10 +134,15 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {certifications.map((cert, index) => (
             <Card key={index} className="p-4 bg-card/50 border-border/50 hover:bg-card-hover transition-colors">
-              <div className="flex items-center">
+              <a 
+                href={cert.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center group"
+              >
                 <div className="w-2 h-2 bg-primary rounded-full mr-3" />
-                <span className="font-medium">{cert}</span>
-              </div>
+                <span className="font-medium group-hover:text-primary transition-colors">{cert.name}</span>
+              </a>
             </Card>
           ))}
         </div>
