@@ -55,7 +55,7 @@ export function Sidebar() {
           {/* Profile Section */}
           <div className="flex flex-col items-center mb-8">
             <div className="w-20 h-20 rounded-full bg-gradient-primary p-0.5 mb-4">
-              <img src={profileImage} alt="Raj Kumar Profile" className="w-full h-full rounded-full object-cover bg-card" />
+              <img src={"https://media.licdn.com/dms/image/v2/D4E03AQGuvW8OzVHnWQ/profile-displayphoto-shrink_800_800/B4EZVCz.mgHcAk-/0/1740582678359?e=1759363200&v=beta&t=5o1LPg-gPLdS1Jbpgfcg_WIBgic4rsc4ISWXCL6ksPs"} alt="Raj Kumar Profile" className="w-full h-full rounded-full object-cover bg-card" />
             </div>
             <h1 className="font-display font-bold text-xl mb-1">Raj Kumar</h1>
             <p className="text-sm text-muted-foreground text-center">
