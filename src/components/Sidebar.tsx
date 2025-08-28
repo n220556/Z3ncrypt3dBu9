@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, User, Code, Briefcase, FileText, BookOpen, Tag, Mail, Menu, X, Terminal, Clock } from 'lucide-react';
+import { Home, User, Code, Briefcase, FileText, BookOpen, Tag, Mail, Menu, X, Terminal, Clock, FolderOpen } from 'lucide-react';
 import profileImage from '@/assets/profile-image.jpg';
 const navigation = [{
   name: 'Home',
@@ -14,6 +14,10 @@ const navigation = [{
   name: 'Skills',
   href: '/skills',
   icon: Code
+}, {
+  name: 'Projects',
+  href: '/projects',
+  icon: FolderOpen
 }, {
   name: 'Services',
   href: '/services',
