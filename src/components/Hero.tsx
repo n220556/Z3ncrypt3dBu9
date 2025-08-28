@@ -100,7 +100,7 @@ export function Hero() {
               <div className="relative w-80 h-80 rounded-full bg-gradient-primary p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-card">
                   <img 
-                    src={profileImage}
+                    src={"https://media.licdn.com/dms/image/v2/D4E03AQGuvW8OzVHnWQ/profile-displayphoto-shrink_800_800/B4EZVCz.mgHcAk-/0/1740582678359?e=1759363200&v=beta&t=5o1LPg-gPLdS1Jbpgfcg_WIBgic4rsc4ISWXCL6ksPs"}
                     alt="Raj Kumar - Cybersecurity Professional"
                     className="w-full h-full object-cover"
                   />
