@@ -207,7 +207,7 @@ export default function Contact() {
             
             <div className="space-y-4">
               <a 
-                href="#"
+                href="https://github.com/n220556"
                 className="flex items-center space-x-4 p-3 rounded-lg hover:bg-card-hover transition-colors border border-border/50"
               >
                 <Github className="h-5 w-5 text-muted-foreground" />
@@ -218,7 +218,7 @@ export default function Contact() {
               </a>
 
               <a 
-                href="#"
+                href="https://www.linkedin.com/in/raj-kumar-pentester/"
                 className="flex items-center space-x-4 p-3 rounded-lg hover:bg-card-hover transition-colors border border-border/50"
               >
                 <Linkedin className="h-5 w-5 text-muted-foreground" />
