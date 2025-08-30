@@ -89,60 +89,76 @@ export function Hero() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Interactive Dynamic Background */}
+      {/* Professional Cybersecurity Background */}
       <div className="absolute inset-0">
-        {/* Mouse-following orbs */}
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+        
+        {/* Circuit board pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-circuit-pattern" />
+        </div>
+        
+        {/* Subtle animated grid */}
+        <div className="absolute inset-0 bg-cyber-grid opacity-30" />
+        
+        {/* Floating data particles */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-primary/60 rounded-full animate-float-particles"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 10}s`,
+                animationDuration: `${15 + Math.random() * 10}s`,
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Subtle glow effects */}
         <div 
-          className="absolute w-96 h-96 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl transition-all duration-1000 ease-out"
+          className="absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl transition-all duration-2000 ease-out"
           style={{
-            left: `${20 + mousePosition.x * 30}%`,
-            top: `${10 + mousePosition.y * 20}%`,
-            transform: `scale(${isHovered ? 1.2 : 1})`,
+            left: `${10 + mousePosition.x * 20}%`,
+            top: `${20 + mousePosition.y * 20}%`,
+            opacity: isHovered ? 0.3 : 0.15,
           }}
         />
         <div 
-          className="absolute w-72 h-72 bg-gradient-to-l from-secondary/15 to-accent/15 rounded-full blur-3xl transition-all duration-1500 ease-out"
+          className="absolute w-72 h-72 bg-secondary/8 rounded-full blur-3xl transition-all duration-2000 ease-out"
           style={{
-            right: `${15 + mousePosition.x * 25}%`,
-            bottom: `${15 + mousePosition.y * 25}%`,
-            transform: `scale(${isHovered ? 1.3 : 1})`,
+            right: `${15 + mousePosition.x * 15}%`,
+            bottom: `${25 + mousePosition.y * 15}%`,
+            opacity: isHovered ? 0.25 : 0.1,
           }}
         />
         
-        {/* Floating Interactive Elements */}
-        {floatingElements.map((element, index) => {
-          const Icon = element.icon;
-          return (
+        {/* Matrix-style code rain (subtle) */}
+        <div className="absolute inset-0 overflow-hidden">
+          {Array.from({ length: 5 }).map((_, i) => (
             <div
-              key={index}
-              className={`absolute transition-all duration-2000 ease-out ${element.color}`}
+              key={i}
+              className="absolute h-full opacity-20 text-primary/30 text-xs font-mono animate-matrix-rain"
               style={{
-                left: `${10 + (index * 15) + mousePosition.x * 10}%`,
-                top: `${20 + (index * 10) + mousePosition.y * 15}%`,
-                animationDelay: `${element.delay}s`,
-                transform: `translateY(${Math.sin(Date.now() / 1000 + index) * 10}px) scale(${isHovered ? 1.2 : 1})`,
+                left: `${10 + i * 20}%`,
+                animationDelay: `${i * 2}s`,
+                animationDuration: `${20 + i * 5}s`,
               }}
             >
-              <Icon className="h-8 w-8 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" />
+              {Array.from({ length: 30 }).map((_, j) => (
+                <div key={j} className="mb-4">
+                  {Math.random().toString(36).substring(7)}
+                </div>
+              ))}
             </div>
-          );
-        })}
+          ))}
+        </div>
         
-        {/* Interactive Grid */}
-        <div 
-          className="absolute inset-0 bg-grid-pattern transition-opacity duration-500"
-          style={{ opacity: isHovered ? 0.3 : 0.1 }}
-        />
-        
-        {/* Dynamic Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-transparent to-background/60" />
-        <div 
-          className="absolute inset-0 transition-opacity duration-1000"
-          style={{
-            background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, hsl(var(--primary) / 0.1) 0%, transparent 50%)`,
-            opacity: isHovered ? 1 : 0.5,
-          }}
-        />
+        {/* Overlay for content readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-slate-950/80" />
       </div>
       
       <div className="relative z-10 w-full">
