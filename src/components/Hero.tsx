@@ -308,7 +308,7 @@ export function Hero() {
                     {/* Inner Container */}
                     <div className="w-full h-full rounded-full overflow-hidden bg-card/95 backdrop-blur-md shadow-inner group-hover:shadow-2xl transition-shadow duration-500">
                       <img 
-                        src="https://media.licdn.com/dms/image/v2/D4E03AQGuvW8OzVHnWQ/profile-displayphoto-shrink_800_800/B4EZVCz.mgHcAk-/0/1740582678359?e=1759363200&v=beta&t=5o1LPg-gPLdS1Jbpgfcg_WIBgic4rsc4ISWXCL6ksPs"
+                        src="https://media.licdn.com/dms/image/v2/D4E03AQFsqWWVEU-HVg/profile-displayphoto-scale_200_200/B4EZjz9z8FGcAY-/0/1756439726873?e=1759363200&v=beta&t=WFuVVLXkjdhrpcnPzFc4XLM7WbDkX956F81kqU5irqY"
                         alt="Raj Kumar - Cybersecurity Professional"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
@@ -334,7 +334,7 @@ export function Hero() {
                 <span className="text-orange-400 font-mono text-lg">🛡️</span>
               </div>
 
-              <div className="absolute bottom-16 right-12 w-12 h-12 glass-card bg-cyan-400/20 rounded-full backdrop-blur-md border border-cyan-400/40 flex items-center justify-center hover-lift pulse-glow shadow-lg group-hover:shadow-cyan-400/25 transition-all duration-500" style={{ animationDelay: '4s' }}>
+              <div className="absoluthttps://media.licdn.com/dms/image/v2/D4E03AQGuvW8OzVHnWQ/profilee bottom-16 right-12 w-12 h-12 glass-card bg-cyan-400/20 rounded-full backdrop-blur-md border border-cyan-400/40 flex items-center justify-center hover-lift pulse-glow shadow-lg group-hover:shadow-cyan-400/25 transition-all duration-500" style={{ animationDelay: '4s' }}>
                 <span className="text-cyan-400 font-mono text-sm">🔒</span>
               </div>
             </div>
