@@ -1,23 +1,148 @@
-import { ArrowRight, Download, Mail, Github, Linkedin } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ArrowRight, Download, Mail, Github, Linkedin, Code, Shield, Target, Zap, Lock, Bug } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import profileImage from '@/assets/profile-image.jpg';
 
 export function Hero() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const [activeSkill, setActiveSkill] = useState(0);
+  const [typedText, setTypedText] = useState('');
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const skills = ['Penetration Testing', 'Vulnerability Assessment', 'Network Security', 'Digital Forensics', 'Incident Response'];
+  const typingTexts = ['Securing Digital Assets', 'Hunting Cyber Threats', 'Protecting Networks', 'Ethical Hacking'];
+
+  // Mouse tracking effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: (e.clientX - rect.left) / rect.width,
+          y: (e.clientY - rect.top) / rect.height,
+        });
+      }
+    };
+
+    const section = sectionRef.current;
+    if (section) {
+      section.addEventListener('mousemove', handleMouseMove);
+      return () => section.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
+  // Auto-cycling skills
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSkill((prev) => (prev + 1) % skills.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [skills.length]);
+
+  // Typing animation
+  useEffect(() => {
+    let currentIndex = 0;
+    let textIndex = 0;
+    let isDeleting = false;
+    
+    const typeEffect = () => {
+      const currentText = typingTexts[textIndex];
+      
+      if (!isDeleting) {
+        setTypedText(currentText.substring(0, currentIndex + 1));
+        currentIndex++;
+        
+        if (currentIndex === currentText.length) {
+          setTimeout(() => {
+            isDeleting = true;
+          }, 2000);
+        }
+      } else {
+        setTypedText(currentText.substring(0, currentIndex - 1));
+        currentIndex--;
+        
+        if (currentIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % typingTexts.length;
+        }
+      }
+    };
+
+    const timer = setInterval(typeEffect, isDeleting ? 50 : 100);
+    return () => clearInterval(timer);
+  }, [typingTexts]);
+
+  const floatingElements = [
+    { icon: Shield, color: 'text-blue-400', delay: 0 },
+    { icon: Lock, color: 'text-green-400', delay: 1 },
+    { icon: Bug, color: 'text-red-400', delay: 2 },
+    { icon: Target, color: 'text-purple-400', delay: 3 },
+    { icon: Code, color: 'text-orange-400', delay: 4 },
+    { icon: Zap, color: 'text-yellow-400', delay: 5 },
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Enhanced Dynamic Background */}
+    <section 
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Interactive Dynamic Background */}
       <div className="absolute inset-0">
-        {/* Animated Grid */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-20 animate-pulse" />
+        {/* Mouse-following orbs */}
+        <div 
+          className="absolute w-96 h-96 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl transition-all duration-1000 ease-out"
+          style={{
+            left: `${20 + mousePosition.x * 30}%`,
+            top: `${10 + mousePosition.y * 20}%`,
+            transform: `scale(${isHovered ? 1.2 : 1})`,
+          }}
+        />
+        <div 
+          className="absolute w-72 h-72 bg-gradient-to-l from-secondary/15 to-accent/15 rounded-full blur-3xl transition-all duration-1500 ease-out"
+          style={{
+            right: `${15 + mousePosition.x * 25}%`,
+            bottom: `${15 + mousePosition.y * 25}%`,
+            transform: `scale(${isHovered ? 1.3 : 1})`,
+          }}
+        />
         
-        {/* Multiple Floating Orbs */}
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-l from-secondary/15 to-primary/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
+        {/* Floating Interactive Elements */}
+        {floatingElements.map((element, index) => {
+          const Icon = element.icon;
+          return (
+            <div
+              key={index}
+              className={`absolute transition-all duration-2000 ease-out ${element.color}`}
+              style={{
+                left: `${10 + (index * 15) + mousePosition.x * 10}%`,
+                top: `${20 + (index * 10) + mousePosition.y * 15}%`,
+                animationDelay: `${element.delay}s`,
+                transform: `translateY(${Math.sin(Date.now() / 1000 + index) * 10}px) scale(${isHovered ? 1.2 : 1})`,
+              }}
+            >
+              <Icon className="h-8 w-8 opacity-60 hover:opacity-100 transition-opacity cursor-pointer" />
+            </div>
+          );
+        })}
         
-        {/* Gradient Overlays */}
+        {/* Interactive Grid */}
+        <div 
+          className="absolute inset-0 bg-grid-pattern transition-opacity duration-500"
+          style={{ opacity: isHovered ? 0.3 : 0.1 }}
+        />
+        
+        {/* Dynamic Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-transparent to-background/60" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5" />
+        <div 
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{
+            background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, hsl(var(--primary) / 0.1) 0%, transparent 50%)`,
+            opacity: isHovered ? 1 : 0.5,
+          }}
+        />
       </div>
       
       <div className="relative z-10 w-full">
@@ -41,20 +166,61 @@ export function Hero() {
                 </span>
               </h1>
               
-              <div className="space-y-4">
-                <h2 className="text-2xl lg:text-3xl font-semibold text-foreground/90 leading-tight">
-                  Aspiring Cybersecurity Professional
-                </h2>
-                <div className="flex flex-wrap gap-2 text-lg font-medium">
-                  <span className="px-3 py-1 rounded-lg bg-primary/20 text-primary border border-primary/30">
-                    Penetration Tester
-                  </span>
-                  <span className="px-3 py-1 rounded-lg bg-secondary/20 text-secondary border border-secondary/30">
-                    CTF Player
-                  </span>
-                  <span className="px-3 py-1 rounded-lg bg-accent/20 text-accent border border-accent/30">
-                    Ethical Hacker
-                  </span>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h2 className="text-2xl lg:text-3xl font-semibold text-foreground/90 leading-tight">
+                    Aspiring Cybersecurity Professional
+                  </h2>
+                  
+                  {/* Interactive Typing Animation */}
+                  <div className="h-8 flex items-center">
+                    <span className="text-xl font-medium text-primary mr-2">{'>'}</span>
+                    <span className="text-xl font-mono text-secondary">
+                      {typedText}
+                      <span className="animate-ping text-primary">|</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Interactive Skills Carousel */}
+                <div className="space-y-3">
+                  <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Specializing In:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill, index) => (
+                      <span
+                        key={skill}
+                        className={`px-4 py-2 rounded-xl font-medium transition-all duration-500 cursor-pointer transform hover:scale-105 ${
+                          index === activeSkill
+                            ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg scale-105'
+                            : 'bg-card/50 text-muted-foreground hover:bg-primary/20 hover:text-primary border border-border/40'
+                        }`}
+                        onClick={() => setActiveSkill(index)}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Enhanced Role Tags */}
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { label: 'Penetration Tester', icon: Target, color: 'primary' },
+                    { label: 'CTF Player', icon: Shield, color: 'secondary' },
+                    { label: 'Ethical Hacker', icon: Bug, color: 'accent' },
+                  ].map(({ label, icon: Icon, color }) => (
+                    <div
+                      key={label}
+                      className={`group flex items-center gap-2 px-4 py-2 rounded-xl glass-card border transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer ${
+                        color === 'primary' ? 'bg-primary/20 text-primary border-primary/30 hover:shadow-primary/25' :
+                        color === 'secondary' ? 'bg-secondary/20 text-secondary border-secondary/30 hover:shadow-secondary/25' :
+                        'bg-accent/20 text-accent border-accent/30 hover:shadow-accent/25'
+                      }`}
+                    >
+                      <Icon className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                      <span className="font-medium">{label}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
               
