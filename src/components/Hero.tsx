@@ -28,7 +28,7 @@ export function Hero() {
         <div className="max-w-5xl mx-auto space-y-8">
           
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500">
+          <div className="absolute top-6 left-6 inline-flex items-center gap-3 px-6 py-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-10">
             <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
             <span className="text-sm font-mono text-muted-foreground group-hover:text-foreground transition-colors">
               Available for Cybersecurity Opportunities
