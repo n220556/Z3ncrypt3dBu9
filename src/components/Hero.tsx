@@ -24,7 +24,7 @@ export function Hero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      <div className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center">
         <div className="max-w-5xl mx-auto space-y-8">
           
           {/* Status Badge */}
