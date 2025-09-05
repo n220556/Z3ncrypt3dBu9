@@ -146,7 +146,7 @@ export default function Skills() {
             
             <div className="space-y-2">
               <h3 className="font-semibold text-secondary">TryHackMe</h3>
-              <p className="text-muted-foreground text-sm">Active since June 2025</p>
+              <p className="text-muted-foreground text-sm">Active since June 2024</p>
               <p className="text-sm">Hands-on cybersecurity training and practical penetration testing</p>
             </div>
           </div>

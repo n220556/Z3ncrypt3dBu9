@@ -179,11 +179,11 @@ export default function Projects() {
         <p className="text-muted-foreground">
           Interested in collaborating or have a project in mind?
         </p>
-        <Button asChild className="hover-scale">
-          <a href="/contact">
-            Get In Touch
-          </a>
-        </Button>
+            <a href="/contact">
+              <Button className="hover-scale">
+                Get In Touch
+              </Button>
+            </a>
       </div>
     </div>
   );

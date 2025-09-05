@@ -61,7 +61,7 @@ export function Sidebar() {
             <div className="relative group">
               <div className="w-24 h-24 rounded-full bg-gradient-primary p-0.5 mb-4 group-hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="https://media.licdn.com/dms/image/v2/D4E03AQFsqWWVEU-HVg/profile-displayphoto-scale_200_200/B4EZjz9z8FGcAY-/0/1756439726873?e=1759363200&v=beta&t=WFuVVLXkjdhrpcnPzFc4XLM7WbDkX956F81kqU5irqY" 
+                  src={profileImage}
                   alt="Raj Kumar Profile" 
                   className="w-full h-full rounded-full object-cover bg-card shadow-glow" 
                 />
@@ -88,7 +88,8 @@ export function Sidebar() {
                     {item.external ? (
                       <a 
                         href={item.href} 
-                        target="_self" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
                         onClick={() => setIsOpen(false)} 
                         className="flex items-center px-3 py-2.5 rounded-lg transition-all duration-200 group hover:bg-card-hover text-muted-foreground hover:text-foreground"
                       >
