@@ -17,7 +17,7 @@ export function Layout({ children }: LayoutProps) {
       
       <div className="flex relative z-10">
         <Sidebar />
-        <main className="flex-1 ml-0 md:ml-64 min-h-screen transition-all duration-300">
+        <main className="flex-1 md:ml-0 min-h-screen">
           <div className="max-w-6xl mx-auto px-6 py-8 md:px-8 md:py-12">
             {children}
           </div>

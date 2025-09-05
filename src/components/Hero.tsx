@@ -1,7 +1,7 @@
 import { ChevronDown, Github, Linkedin, Mail, Shield, Terminal, Code, Zap, Download, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 export function Hero() {
-  return <div className="relative min-h-screen overflow-hidden">
+  return <div className="min-h-screen relative overflow-hidden">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute inset-0 bg-modern-mesh opacity-40" />
@@ -15,8 +15,8 @@ export function Hero() {
       }} />)}
       </div>
 
-      {/* Status Badge - Fixed positioning */}
-      <div className="absolute top-6 right-6 flex items-center gap-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-50 px-4 py-2">
+      {/* Status Badge */}
+      <div className="absolute top-6 left-6 flex items-center gap-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-20 px-4 py-2">
         <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
         <span className="text-sm font-mono text-muted-foreground group-hover:text-foreground transition-colors">
           Available for Cybersecurity Opportunities
