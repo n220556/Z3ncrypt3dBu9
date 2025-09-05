@@ -7,14 +7,7 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-hero relative overflow-hidden text-foreground font-display">
-      {/* Enhanced Background */}
-      <div className="absolute inset-0 bg-modern-mesh opacity-30" />
-      <div className="absolute inset-0 bg-gradient-subtle" />
-      
-      {/* Subtle animated background elements */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-      
+    <div className="min-h-screen relative overflow-hidden text-foreground font-display">
       <div className="flex relative z-10">
         <Sidebar />
         <main className="flex-1 md:ml-0 min-h-screen">
