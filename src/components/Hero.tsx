@@ -15,19 +15,18 @@ export function Hero() {
       }} />)}
       </div>
 
+      {/* Status Badge */}
+      <div className="absolute top-6 left-6 flex items-center gap-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-20 px-4 py-2">
+        <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+        <span className="text-sm font-mono text-muted-foreground group-hover:text-foreground transition-colors">
+          Available for Cybersecurity Opportunities
+        </span>
+      </div>
+
       {/* Main Content */}
       <div className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center">
         <div className="max-w-5xl mx-auto space-y-8">
           
-          {/* Status Badge */}
-          <div className="absolute top-6 left-6 flex items-center gap-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-10 px-4 py-2">
-            <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-            <span className="text-sm font-mono text-muted-foreground group-hover:text-foreground transition-colors">
-              Available for Cybersecurity Opportunities
-            </span>
-            
-          </div>
-
           {/* Hero Headlines */}
           <div className="space-y-6">
             <div className="space-y-4">
