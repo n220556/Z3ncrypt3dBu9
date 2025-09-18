@@ -34,6 +34,7 @@ export function Hero() {
                 <span className="block text-foreground leading-none mx-[3px] my-px">
                   Raj Kumar
                 </span>
+                <span className="block"></span>
                 <span className="block gradient-text-animated text-4xl md:text-6xl lg:text-7xl font-semibold mt-2">
                   Cybersecurity Professional
                 </span>
