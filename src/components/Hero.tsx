@@ -16,7 +16,7 @@ export function Hero() {
       </div>
 
       {/* Status Badge - Top Left */}
-      <div className="absolute top-6 left-6 flex items-center gap-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-20 px-4 py-2">
+      <div className="absolute top-4 md:top-6 left-4 md:left-6 flex items-center gap-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-20 px-4 py-2">
         <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
         <span className="text-sm font-mono text-muted-foreground group-hover:text-foreground transition-colors">
           Available for Cybersecurity Opportunities
@@ -24,7 +24,7 @@ export function Hero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative flex flex-col items-center justify-center min-h-screen text-center px-0">
+      <div className="relative flex flex-col items-center justify-center min-h-screen text-center px-0 pt-24 md:pt-28">
         <div className="max-w-5xl mx-auto space-y-8">
           
           {/* Hero Headlines */}
