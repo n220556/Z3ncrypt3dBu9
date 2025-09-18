@@ -31,7 +31,7 @@ export function Hero() {
           <div className="space-y-6">
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight">
-                <span className="block text-foreground leading-none mx-[3px] my-px">
+                <span className="block text-foreground leading-none mx-[3px] my-px mt-8">
                   Raj Kumar
                 </span>
                 <span className="block gradient-text-animated text-4xl md:text-6xl lg:text-7xl font-semibold mt-2">
