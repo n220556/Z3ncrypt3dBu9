@@ -15,13 +15,7 @@ export function Hero() {
       }} />)}
       </div>
 
-      {/* Status Badge */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 flex items-center gap-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-20 px-4 py-2 mb-8">
-        <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-        <span className="text-sm font-mono text-muted-foreground group-hover:text-foreground transition-colors">
-          Available for Cybersecurity Opportunities
-        </span>
-      </div>
+      {/* Status badge moved into content to avoid overlap */}
 
       {/* Main Content */}
       <div className="relative flex flex-col items-center justify-center min-h-screen text-center px-0">
@@ -29,6 +23,15 @@ export function Hero() {
           
           {/* Hero Headlines */}
           <div className="space-y-6">
+            {/* Status Badge (in-flow) */}
+            <div className="flex justify-center">
+              <div className="flex items-center gap-3 rounded-full glass-card border border-primary/20 group hover:border-primary/40 transition-all duration-500 z-10 px-4 py-2">
+                <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+                <span className="text-sm font-mono text-muted-foreground group-hover:text-foreground transition-colors">
+                  Available for Cybersecurity Opportunities
+                </span>
+              </div>
+            </div>
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight">
                 <span className="block text-foreground leading-none mx-[3px] my-px">
