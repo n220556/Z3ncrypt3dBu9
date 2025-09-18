@@ -1,58 +1,87 @@
 import { Code, Shield, Server, GitBranch } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-
-const skillCategories = [
-  {
-    title: 'Programming & Development',
-    icon: Code,
-    color: 'primary',
-    skills: [
-      { name: 'Java', level: 85 },
-      { name: 'Python', level: 90 },
-      { name: 'C', level: 75 },
-      { name: 'JavaScript', level: 80 },
-      { name: 'SQL', level: 85 },
-      { name: 'DSA', level: 80 }
-    ]
-  },
-  {
-    title: 'Cybersecurity & Networking',
-    icon: Shield,
-    color: 'secondary',
-    skills: [
-      { name: 'Penetration Testing', level: 85 },
-      { name: 'Web Security', level: 80 },
-      { name: 'Network Security', level: 85 },
-      { name: 'Linux', level: 90 },
-      { name: 'Nmap', level: 85 },
-      { name: 'Burp Suite', level: 80 },
-      { name: 'Log Inspection', level: 75 }
-    ]
-  },
-  {
-    title: 'Tools & Technologies',
-    icon: Server,
-    color: 'accent',
-    skills: [
-      { name: 'Kali Linux', level: 90 },
-      { name: 'Wireshark', level: 80 },
-      { name: 'Metasploit', level: 75 },
-      { name: 'OWASP ZAP', level: 70 },
-      { name: 'Nikto', level: 75 }
-    ]
-  },
-  {
-    title: 'Version Control',
-    icon: GitBranch,
-    color: 'primary',
-    skills: [
-      { name: 'Git', level: 85 },
-      { name: 'GitHub', level: 90 }
-    ]
-  }
-];
-
+const skillCategories = [{
+  title: 'Programming & Development',
+  icon: Code,
+  color: 'primary',
+  skills: [{
+    name: 'Java',
+    level: 85
+  }, {
+    name: 'Python',
+    level: 90
+  }, {
+    name: 'C',
+    level: 75
+  }, {
+    name: 'JavaScript',
+    level: 80
+  }, {
+    name: 'SQL',
+    level: 85
+  }, {
+    name: 'DSA',
+    level: 80
+  }]
+}, {
+  title: 'Cybersecurity & Networking',
+  icon: Shield,
+  color: 'secondary',
+  skills: [{
+    name: 'Penetration Testing',
+    level: 85
+  }, {
+    name: 'Web Security',
+    level: 80
+  }, {
+    name: 'Network Security',
+    level: 85
+  }, {
+    name: 'Linux',
+    level: 90
+  }, {
+    name: 'Nmap',
+    level: 85
+  }, {
+    name: 'Burp Suite',
+    level: 80
+  }, {
+    name: 'Log Inspection',
+    level: 75
+  }]
+}, {
+  title: 'Tools & Technologies',
+  icon: Server,
+  color: 'accent',
+  skills: [{
+    name: 'Kali Linux',
+    level: 90
+  }, {
+    name: 'Wireshark',
+    level: 80
+  }, {
+    name: 'Metasploit',
+    level: 75
+  }, {
+    name: 'OWASP ZAP',
+    level: 70
+  }, {
+    name: 'Nikto',
+    level: 75
+  }]
+}, {
+  title: 'Version Control',
+  icon: GitBranch,
+  color: 'primary',
+  skills: [{
+    name: 'Git',
+    level: 85
+  }, {
+    name: 'GitHub',
+    level: 90
+  }]
+}];
 const getColorClasses = (color: string) => {
   switch (color) {
     case 'secondary':
@@ -65,7 +94,7 @@ const getColorClasses = (color: string) => {
     case 'accent':
       return {
         icon: 'text-accent-foreground',
-        border: 'border-accent/20', 
+        border: 'border-accent/20',
         bg: 'bg-accent/5',
         progress: 'bg-accent-foreground'
       };
@@ -78,10 +107,8 @@ const getColorClasses = (color: string) => {
       };
   }
 };
-
 export default function Skills() {
-  return (
-    <div className="space-y-12">
+  return <div className="space-y-12 bg-zinc-950">
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
@@ -95,11 +122,9 @@ export default function Skills() {
       {/* Skills Grid */}
       <div className="grid gap-8">
         {skillCategories.map((category, index) => {
-          const Icon = category.icon;
-          const colors = getColorClasses(category.color);
-          
-          return (
-            <Card key={index} className={`p-6 ${colors.bg} border-border/50 hover:bg-card-hover transition-colors`}>
+        const Icon = category.icon;
+        const colors = getColorClasses(category.color);
+        return <Card key={index} className={`p-6 ${colors.bg} border-border/50 hover:bg-card-hover transition-colors`}>
               <div className="space-y-6">
                 <div className="flex items-center space-x-3">
                   <div className={`p-2 rounded-lg bg-card border ${colors.border}`}>
@@ -109,8 +134,7 @@ export default function Skills() {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="space-y-2">
+                  {category.skills.map((skill, skillIndex) => <div key={skillIndex} className="space-y-2">
                       <div className="flex justify-between items-center">
                         <span className="font-medium text-foreground">{skill.name}</span>
                         <span className="text-sm text-muted-foreground">{skill.level}%</span>
@@ -118,19 +142,16 @@ export default function Skills() {
                       
                       <div className="relative">
                         <div className="w-full bg-muted rounded-full h-2">
-                          <div 
-                            className={`h-2 rounded-full transition-all duration-1000 ease-out ${colors.progress}`}
-                            style={{ width: `${skill.level}%` }}
-                          />
+                          <div className={`h-2 rounded-full transition-all duration-1000 ease-out ${colors.progress}`} style={{
+                      width: `${skill.level}%`
+                    }} />
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
-            </Card>
-          );
-        })}
+            </Card>;
+      })}
       </div>
 
       {/* CTF Achievements */}
@@ -152,6 +173,5 @@ export default function Skills() {
           </div>
         </div>
       </Card>
-    </div>
-  );
+    </div>;
 }
