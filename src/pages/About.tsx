@@ -46,7 +46,35 @@ const certifications = [
 
 export default function About() {
   return (
-    <div className="space-y-12">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Enhanced Background */}
+      <div className="absolute inset-0 bg-gradient-hero opacity-80" />
+      <div className="absolute inset-0 bg-modern-mesh opacity-20" />
+      <div className="absolute inset-0 bg-gradient-subtle" />
+      
+      {/* Floating Particles */}
+      <div className="absolute inset-0">
+        {[...Array(15)].map((_, i) => (
+          <div 
+            key={i} 
+            className={`absolute w-1 h-1 bg-primary/20 rounded-full animate-float-particles opacity-${Math.random() > 0.5 ? '10' : '20'}`} 
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${8 + Math.random() * 4}s`
+            }} 
+          />
+        ))}
+      </div>
+
+      {/* Floating Geometric Elements */}
+      <div className="absolute top-1/4 left-8 w-16 h-16 border border-primary/10 rounded-2xl rotate-45 animate-spin-slow opacity-30" />
+      <div className="absolute bottom-1/3 right-12 w-12 h-12 bg-gradient-secondary opacity-5 rounded-full animate-float-2" />
+      <div className="absolute top-1/2 right-8 w-10 h-10 border-2 border-accent/15 rounded-full animate-float-3" />
+      <div className="absolute top-3/4 left-1/4 w-6 h-6 bg-primary/10 rounded-lg animate-float-1" />
+
+      <div className="relative z-10 space-y-12 px-6 py-12">
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
@@ -58,7 +86,7 @@ export default function About() {
       </div>
 
       {/* Bio Section */}
-      <Card className="p-8 bg-gradient-subtle border-border/50">
+      <Card className="p-8 glass-card border-primary/20 backdrop-blur-sm shadow-elegant">
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold flex items-center">
             <Award className="mr-3 h-6 w-6 text-primary" />
@@ -87,7 +115,7 @@ export default function About() {
         
         <div className="space-y-6">
           {education.map((edu, index) => (
-            <Card key={index} className="p-6 hover:bg-card-hover transition-colors border-border/50">
+            <Card key={index} className="p-6 glass-card border-primary/20 backdrop-blur-sm hover:border-primary/40 hover:shadow-glow transition-all duration-300">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div className="flex-1 space-y-2">
                   <h3 className="font-semibold text-lg text-foreground">
@@ -133,7 +161,7 @@ export default function About() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {certifications.map((cert, index) => (
-            <Card key={index} className="p-4 bg-card/50 border-border/50 hover:bg-card-hover transition-colors">
+            <Card key={index} className="p-4 glass-card border-primary/20 backdrop-blur-sm hover:border-primary/40 hover:shadow-glow transition-all duration-300">
               <a 
                 href={cert.link} 
                 target="_blank" 
@@ -146,6 +174,7 @@ export default function About() {
             </Card>
           ))}
         </div>
+      </div>
       </div>
     </div>
   );
