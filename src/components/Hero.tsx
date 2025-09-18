@@ -1,7 +1,7 @@
 import { ChevronDown, Github, Linkedin, Mail, Shield, Terminal, Code, Zap, Download, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 export function Hero() {
-  return 
+  return <div className="min-h-screen relative overflow-hidden">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute inset-0 bg-modern-mesh opacity-40" />
@@ -24,7 +24,7 @@ export function Hero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      <div className="relative flex flex-col items-center justify-center min-h-screen text-center px-0">
         <div className="max-w-5xl mx-auto space-y-8">
           
           {/* Hero Headlines */}
@@ -134,6 +134,6 @@ export function Hero() {
       <div className="absolute top-1/4 left-8 w-20 h-20 border border-primary/10 rounded-2xl rotate-45 animate-spin-slow" />
       <div className="absolute bottom-1/3 right-12 w-16 h-16 bg-gradient-secondary opacity-10 rounded-full animate-float-2" />
       <div className="absolute top-1/2 right-8 w-12 h-12 border-2 border-accent/20 rounded-full animate-float-3" />
-      <div className="absolute top-3/4 left-1/4 w-8 h-8 bg-primary/20 rounded-lg animate-float-1" />;
-   
+      <div className="absolute top-3/4 left-1/4 w-8 h-8 bg-primary/20 rounded-lg animate-float-1" />
+    </div>;
 }
